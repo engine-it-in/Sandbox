@@ -93,7 +93,3 @@ def add_new_message_by_key(key):
                 print(usr_com('Non'))
                 value = input(usr_com_with_variants('Ret'))
                 pass
-
-
-if __name__ == "__main__":
-    print('Now time for your test')
