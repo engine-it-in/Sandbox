@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""Work with user message"""
+"""Work with message from file"""
 
 import admin_data as ad
 
@@ -36,13 +36,13 @@ def discover_separator(file):
     try:
         for item in open_file:
             item = open_file.readline().split()
-            item = item[1]  # crutch
+            item = item[1]
             if item in ad.separator:
                 break
             else:
                 continue
     except IndexError:
-        print("Something bad")  # crutchs
+        print("Something bad")
         exit()
     return item
 
@@ -61,7 +61,7 @@ def add_com_to_file(key, value):
     :param key: key - command
     :param value: value
     """
-    dao = open(r'admin_text.py', 'a', encoding='utf-8')
+    dao = open('admin_text.py', 'a', encoding='utf-8')
     dao.write(key + ' = ' + "'" + (value) + "'" + '\n')
     dao.close()
     print('You command was added to file')
