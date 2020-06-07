@@ -15,7 +15,7 @@ def dict_by_file(file):
         k, *v = i.split(' = ')
         v = ''.join(v).replace("'", "").capitalize().strip() + ' '
         dic[k] = v
-    return(dic)
+    return dic
 
 
 def usr_com(key):
@@ -25,7 +25,7 @@ def usr_com(key):
     """
     try:
         d = dict_by_file('admin_text.py')
-        return (d[key])
+        return d[key]
     except KeyError:
         return None
         exit()
@@ -39,11 +39,13 @@ def discover_separator(file):
     try:
         for item in open_file:
             item = open_file.readline().split()
-            item = item[1] #crutch
-            if item in ad.separator: break
-            else: continue
+            item = item[1]  # crutch
+            if item in ad.separator:
+                break
+            else:
+                continue
     except IndexError:
-        print("Something bad") #crutchs
+        print("Something bad")  # crutchs
         exit()
     return item
 
@@ -51,8 +53,10 @@ def discover_separator(file):
 def correct_exist_value(key):
     """Correct existing values"""
     dic = dict_by_file('admin_text.py')
-    if key in set(dic.keys()): return key
-    else: return None
+    if key in set(dic.keys()):
+        return key
+    else:
+        return None
 
 
 def add_com_to_file(key, value):
@@ -61,7 +65,7 @@ def add_com_to_file(key, value):
     :param value: value
     """
     dao = open(r'admin_text.py', 'a', encoding='utf-8')
-    dao.write(key+' = '+"'"+(value)+"'"+'\n')
+    dao.write(key + ' = ' + "'" + (value) + "'" + '\n')
     dao.close()
     print('You command was added to file')
 
