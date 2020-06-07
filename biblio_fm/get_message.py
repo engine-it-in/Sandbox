@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
-import admin_data as ad
-
 """Work with user message"""
+
+import admin_data as ad
 
 
 def dict_by_file(file):
@@ -28,9 +28,6 @@ def usr_com(key):
         return d[key]
     except KeyError:
         return None
-        exit()
-    except:
-        print('Something bad')
 
 
 def discover_separator(file):
