@@ -13,7 +13,7 @@ class DocCreator(object):
         self.KEY = KEY   # ?
 
 
-    def PrepareDialog(self):
+    def prepare_dialog(self):
         """
         Purprose:
             Dialog with user
