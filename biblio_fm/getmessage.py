@@ -1,7 +1,9 @@
 # -*- coding: utf-8 -*-
 """Work with message from file"""
 
-import admin_data as ad
+import admindata as ad
+
+ADMIN_TEXT = 'admintext.py'
 
 
 def dict_by_file(file):
@@ -11,10 +13,10 @@ def dict_by_file(file):
     """
     dic = dict()
     dao = open(file, 'r', encoding='utf-8')
-    for i in dao:
-        k, *v = i.split(' = ')
-        v = ''.join(v).replace("'", "").capitalize().strip() + ' '
-        dic[k] = v
+    for item in dao:
+        key, *value = i.split(' = ')
+        value = ''.join(value).replace("'", "").capitalize().strip() + ' '
+        dic[key] = value
     return dic
 
 
@@ -24,8 +26,8 @@ def usr_com(key):
     :return: value of message
     """
     try:
-        d = dict_by_file('admin_text.py')
-        return d[key]
+        dic = dict_by_file(ADMIN_TEXT)
+        return dic[key]
     except KeyError:
         return None
 
@@ -48,8 +50,8 @@ def discover_separator(file):
 
 
 def correct_exist_value(key):
-    """Correct existing values"""
-    dic = dict_by_file('admin_text.py')
+    """Check existing values"""
+    dic = dict_by_file(ADMIN_TEXT)
     if key in set(dic.keys()):
         return key
     else:
@@ -61,7 +63,7 @@ def add_com_to_file(key, value):
     :param key: key - command
     :param value: value
     """
-    dao = open('admin_text.py', 'a', encoding='utf-8')
+    dao = open(ADMIN_TEXT, 'a', encoding='utf-8')
     dao.write(key + ' = ' + "'" + (value) + "'" + '\n')
     dao.close()
     print('You command was added to file')
@@ -94,3 +96,8 @@ def add_new_message_by_key(key):
                 print(usr_com('Non'))
                 value = input(usr_com_with_variants('Ret'))
                 pass
+
+
+if __name__ == '__main__':
+    """Let's go test it"""
+    print('Have a nice journey')
